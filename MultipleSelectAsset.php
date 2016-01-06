@@ -2,6 +2,8 @@
 
 namespace avikarsha\multipleselect;
 
+use yii\web\AssetBundle;
+
 class MultipleSelectAsset extends AssetBundle
 {
     /**
