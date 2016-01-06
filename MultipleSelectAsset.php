@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 
 class MultipleSelectAsset extends AssetBundle
 {
-	public $sourcePath = '@vendor/2amigos/yii2-multiple-select/assets';
+	public $sourcePath = '@vendor/avikarsha/yii2-multiple-select/assets';
 
 	public $js = [
 		'multiple-select.js'
