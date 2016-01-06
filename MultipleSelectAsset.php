@@ -4,16 +4,20 @@ namespace avikarsha\multipleselect;
 
 use yii\web\AssetBundle;
 
+
 class MultipleSelectAsset extends AssetBundle
 {
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        $this->setSourcePath(__DIR__ . '/assets');
-        $this->setupAssets('css', ['multiple-select']);
-        $this->setupAssets('js', ['multiple-select']);
-        parent::init();
-    }
+	public $sourcePath = '@vendor/2amigos/yii2-multiple-select/assets';
+
+	public $js = [
+		'multiple-select.js'
+	];
+
+	public $css = [
+		'multiple-select.css'
+	];
+
+	public $depends = [
+		'yii\bootstrap\BootstrapPluginAsset'
+	];
 }
