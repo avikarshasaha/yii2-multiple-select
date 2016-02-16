@@ -3,7 +3,9 @@
  * @version 1.2.1
  *
  * http://wenzhixin.net.cn/p/multiple-select/
+ (updated)
  */
+
 
 (function ($) {
 
