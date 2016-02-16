@@ -210,10 +210,12 @@
                 $ul.append([
                     '<li class="ms-select-all">',
                     '<label>',
-                    sprintf('<input id="test3" type="checkbox" %s />', this.selectAllName),
-                    this.options.selectAllDelimiter[0],
-                    this.options.selectAllText,
-                    this.options.selectAllDelimiter[1],
+                    sprintf('<input type="checkbox" id="%s" %s /> ', this.selectAllName, this.selectAllName),
+                    sprintf('<label for="%s"> %s %s %s</label>', 
+                        this.selectAllName,
+                        this.options.selectAllDelimiter[0], 
+                        this.options.selectAllText,
+                        this.options.selectAllDelimiter[1]),
                     '</label>',
                     '</li>'
                 ].join(''));
@@ -254,10 +256,12 @@
                 type = this.options.single ? 'radio' : 'checkbox';
 
             if ($elm.is('option')) {
+
                 var value = $elm.val(),
                     text = that.options.textTemplate($elm),
                     selected = $elm.prop('selected'),
                     style = sprintf('style="%s"', this.options.styler(value)),
+                    forlevel = group+'_'+text,
                     $el;
 
                 disabled = groupDisabled || $elm.prop('disabled');
@@ -265,12 +269,12 @@
                 $el = $([
                     sprintf('<li class="%s %s" %s %s>', multiple, classes, title, style),
                     sprintf('<label class="%s">', disabled ? 'disabled' : ''),
-                    sprintf('<input type="%s" %s%s%s%s>',
-                        type, this.selectItemName,
+                    sprintf('<input type="%s" id="%s" %s%s%s%s>',
+                        type, forlevel, this.selectItemName,
                         selected ? ' checked="checked"' : '',
                         disabled ? ' disabled="disabled"' : '',
                         sprintf(' data-group="%s"', group)),
-                    text,
+                    sprintf('<label for="%s">%s</label>', forlevel, text),
                     '</label>',
                     '</li>'
                 ].join(''));
@@ -282,15 +286,18 @@
                     $group = $('<div/>');
 
                 group = 'group_' + i;
+                forlevel = group;
                 disabled = $elm.prop('disabled');
 
                 $group.append([
                     '<li class="group">',
                     sprintf('<label class="optgroup %s" data-group="%s">', disabled ? 'disabled' : '', group),
                     this.options.hideOptgroupCheckboxes || this.options.single ? '' :
-                        sprintf('<input type="checkbox" %s %s>',
-                        this.selectGroupName, disabled ? 'disabled="disabled"' : ''),
-                    label,
+                        sprintf('<input type="checkbox" id="%s" %s %s>',
+                        forlevel, 
+                        this.selectGroupName, 
+                        disabled ? 'disabled="disabled"' : ''),
+                    sprintf('<label for="%s">%s</label>', forlevel, label),
                     '</label>',
                     '</li>'
                 ].join(''));
